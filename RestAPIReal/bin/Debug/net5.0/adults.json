@@ -298,5 +298,20 @@
     "Weight": 31,
     "Height": 190,
     "Sex": "F"
+  },
+  {
+    "JobTitle": {
+      "JobTitle": "Arbejdsl\u00F8s",
+      "Salary": 1200
+    },
+    "Id": 0,
+    "FirstName": "Adam",
+    "LastName": "Nielsen",
+    "HairColor": "Brunt",
+    "EyeColor": "Lilla",
+    "Age": 34,
+    "Weight": 75,
+    "Height": 156,
+    "Sex": "F"
   }
 ]
