@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -8,17 +7,16 @@ namespace FileData
 {
     public class FileContext
     {
-        
-        public IList<Adult> Adults { get; private set; }
+        private readonly string adultsFile = "adults.json";
 
         private readonly string familiesFile = "families.json";
-        private readonly string adultsFile = "adults.json";
 
         public FileContext()
         {
-            
             Adults = File.Exists(adultsFile) ? ReadData<Adult>(adultsFile) : new List<Adult>();
         }
+
+        public IList<Adult> Adults { get; }
 
         private IList<T> ReadData<T>(string s)
         {
@@ -30,14 +28,12 @@ namespace FileData
 
         public void SaveChanges()
         {
-           
-
             // storing persons
-            string jsonAdults = JsonSerializer.Serialize(Adults, new JsonSerializerOptions
+            var jsonAdults = JsonSerializer.Serialize(Adults, new JsonSerializerOptions
             {
                 WriteIndented = true
             });
-            using (StreamWriter outputFile = new StreamWriter(adultsFile, false))
+            using (var outputFile = new StreamWriter(adultsFile, false))
             {
                 outputFile.Write(jsonAdults);
             }

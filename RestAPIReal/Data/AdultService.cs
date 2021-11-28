@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 using System.Threading.Tasks;
 using FileData;
 using Models;
@@ -10,13 +7,12 @@ namespace RestAPIReal
 {
     public class AdultService : IAdultService
     {
-        FileContext adultsFromJson = new FileContext();
-        
-        
-        
+        private readonly FileContext adultsFromJson = new();
+
+
         public async Task<IList<Adult>> GetAdults()
         {
-            List<Adult> tmp = new List<Adult>(adultsFromJson.Adults);
+            var tmp = new List<Adult>(adultsFromJson.Adults);
             return tmp;
         }
 
@@ -26,8 +22,5 @@ namespace RestAPIReal
             adultsFromJson.SaveChanges();
             return adult;
         }
-
-
-
     }
 }

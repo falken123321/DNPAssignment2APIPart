@@ -1,8 +1,13 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Models
 {
     public class Job
     {
-        public string JobTitle { get; set; }
-        public int Salary { get; set; }
+        [Required] public string JobTitle { get; set; }
+
+        [Required] public int Salary { get; set; }
+
+        [Key] public int jobNr { get; set; }
     }
 }
